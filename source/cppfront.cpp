@@ -3797,10 +3797,13 @@ public:
             emitting_that_function = true;
             assert(
                 n.pass == passing_style::in
+                || n.pass == passing_style::inout
                 || n.pass == passing_style::move
             );
-            auto pass = std::string{" const&"};
-            if (
+            auto pass = std::string{" &const"};
+            if (n.pass == passing_style::inout)
+                pass = "&";
+            else if (
                 n.pass == passing_style::move
                 || emitting_move_that_function
                 )

@@ -5497,10 +5497,11 @@ private:
         if (
             n->declaration->has_name("that")
             && n->pass != passing_style::in
+            && n->pass != passing_style::inout
             && n->pass != passing_style::move
             )
         {
-            error( "a 'that' parameter must be in or move", false );
+            error( "a 'that' parameter must be in, inout or move", false );
         }
 
         //  The only parameter type that could be const-qualified is a 'copy' parameter, because
